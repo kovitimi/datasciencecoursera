@@ -11,3 +11,7 @@ aggdata <-aggregate(mtcars, by=list(cyl,vs),
 print(aggdata)
 detach(mtcars)
 ```
+
+
+#dplyr
+======
