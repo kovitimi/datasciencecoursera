@@ -31,12 +31,15 @@ select(iris, -(Petal.Length:Petal.Width)) ##Select variables excluding columns b
 select(iris, contains("etal"))
 ```
 
-####kl
+####Subset rows/ Return rows with matching conditions
 
 **filter**
 
 ```
-
+mtcars<-tbl_df(mtcars)
+filter(mtcars, cyl == 8) ##No need to specify mtcars$cyl
+filter(mtcars, cyl < 6)
+filter(mtcars, cyl < 6, hp < 4) ##Can specifiy as many conditions as I want
 ```
 
 ####kl
@@ -62,3 +65,34 @@ select(iris, contains("etal"))
 ```
 
 ```
+
+#Relation operators
+======
+|Relation operators|
+|----------|
+|x < y|
+|x > y|
+|x <= y|
+|x >= y|
+|x == y|
+|x != y|
+
+#Functions
+
+##Numeric Functions
+
+
+| Functions       | Description           | 
+| ------------- |:-------------:| 
+abs(x)|	absolute value
+sqrt(x)|	square root
+ceiling(x)|	ceiling(3.475) is 4
+floor(x)|	floor(3.475) is 3
+trunc(x)|	trunc(5.99) is 5
+round(x, digits=n)|	round(3.475, digits=2) is 3.48
+signif(x, digits=n)|	signif(3.475, digits=2) is 3.5
+cos(x), sin(x), tan(x)|	also acos(x), cosh(x), acosh(x), etc.
+log(x)|	natural logarithm
+log10(x)|	common logarithm
+exp(x)|	e^x
+
