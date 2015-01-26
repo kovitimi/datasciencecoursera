@@ -49,14 +49,16 @@ filter(mtcars, !is.na(gear)) ##Filter NA-s no need for ...$...
 **arrange**
 
 ```
-
+arrange(mtcars, cyl, disp) ##Ascending order first according to cyl then according ot disp
+arrange(mtcars, desc(disp)) ##Arranging in descending order
 ```
 
-####kl
+####Creates new variables and transforms variables in the dataset
 
 **mutate**
 
 ```
+mutate(mtcars, displ_l = disp / 61.0237)
 
 ```
 
