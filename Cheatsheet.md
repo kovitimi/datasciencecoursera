@@ -58,13 +58,24 @@ arrange(mtcars, desc(disp)) ##Arranging in descending order
 **mutate**
 
 ```
-mutate(mtcars, displ_l = disp / 61.0237)
+mutate(mtcars, displ_l = disp / 61.0237) 
+mutate(mtcars, displ_l = disp / 61.0237, disp_m = disp_l / 5.12) ##Can create multiple new variables in a row
 
 ```
 
-####kl
+####Summarise multiple values to a single value (collapse a dataset into a row)
 
 **summarize**
+
+```
+summarize(mtcars, mean(disp))
+summarize(group_by(mtcars, cyl), mean(disp)) ##
+summarize(group_by(mtcars, cyl), m = mean(disp), sd = sd(disp))
+```
+
+####Group a tbl by one or more variables
+
+**group_by**
 
 ```
 
