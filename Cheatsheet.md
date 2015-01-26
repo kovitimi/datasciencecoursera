@@ -40,9 +40,11 @@ mtcars<-tbl_df(mtcars)
 filter(mtcars, cyl == 8) ##No need to specify mtcars$cyl
 filter(mtcars, cyl < 6)
 filter(mtcars, cyl < 6, hp < 4) ##Can specifiy as many conditions as I want
+filter(mtcars, cyl < 6 | hp < 4) ##Can use logical operators like OR | 
+filter(mtcars, !is.na(gear)) ##Filter NA-s no need for ...$...
 ```
 
-####kl
+####Arrange rows by values of variables
 
 **arrange**
 
