@@ -81,6 +81,54 @@ summarize(group_by(mtcars, cyl), m = mean(disp), sd = sd(disp))
 
 ```
 
+**n()** The number of observations in the current group
+**n_distinct(x)** Count the number of unique values in a vector
+
+
+####Chain together multiple operations
+
+**%>%**
+
+```
+# If you're performing many operations you can either do step by step
+if (require("nycflights13")) {
+a1 <- group_by(flights, year, month, day)
+a2 <- select(a1, arr_delay, dep_delay)
+a3 <- summarise(a2,
+  arr = mean(arr_delay, na.rm = TRUE),
+  dep = mean(dep_delay, na.rm = TRUE))
+a4 <- filter(a3, arr > 30 | dep > 30)
+
+# If you don't want to save the intermediate results, you need to
+# wrap the functions:
+filter(
+  summarise(
+    select(
+      group_by(flights, year, month, day),
+      arr_delay, dep_delay
+    ),
+    arr = mean(arr_delay, na.rm = TRUE),
+    dep = mean(dep_delay, na.rm = TRUE)
+  ),
+  arr > 30 | dep > 30
+)
+
+# This is difficult to read because the order of the operations is from
+# inside to out, and the arguments are a long way away from the function.
+# Alternatively you can use chain or %>% to sequence the operations
+# linearly:
+
+flights %>%
+  group_by(year, month, day) %>%
+  select(arr_delay, dep_delay) %>%
+  summarise(
+    arr = mean(arr_delay, na.rm = TRUE),
+    dep = mean(dep_delay, na.rm = TRUE)
+  ) %>%
+  filter(arr > 30 | dep > 30)
+}
+```
+
 #Relation operators
 ======
 |Relation operators|
