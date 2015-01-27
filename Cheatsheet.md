@@ -157,7 +157,7 @@ students3 %>%
 
 
 #Relation operators
-======
+
 |Relation operators|
 |----------|
 |x < y|
