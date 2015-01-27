@@ -12,6 +12,9 @@ print(aggdata)
 detach(mtcars)
 ```
 
+####Remove duplicate elements
+
+**unique**
 
 #dplyr
 ======
@@ -128,6 +131,32 @@ flights %>%
   filter(arr > 30 | dep > 30)
 }
 ```
+
+#tidyr
+======
+
+**chain** works in this package as well
+
+####Gather columns into key-value pairs (melt variables into single column)
+
+**gather**
+
+```
+# From http://stackoverflow.com/questions/1181060
+stocks <- data.frame(
+  time = as.Date('2009-01-01') + 0:9,
+  X = rnorm(10, 0, 1),
+  Y = rnorm(10, 0, 2),
+  Z = rnorm(10, 0, 4)
+)
+
+gather(stocks, stock, price, -time)
+stocks %>% gather(stock, price, -time)
+
+students3 %>%
+  gather(class, grade, class1:class5, na.rm = TRUE)
+```
+
 
 #Relation operators
 ======
