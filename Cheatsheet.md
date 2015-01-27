@@ -230,3 +230,7 @@ exp(x)|	e^x
 
 ```
 qplot(log(pm25), log(eno), data = maacs, color=mopos, geom=c("point","smooth"), method="lm")
+labs()
+theme()
+
+```
