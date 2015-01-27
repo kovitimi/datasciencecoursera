@@ -187,6 +187,15 @@ stocksm %>% spread(stock, price)
 stocksm %>% spread(time, price)
 ```
 
+####Extract numeric component of variable
+
+**extract_numeric**
+
+```
+extract_numeric(x)
+extract_numeric("$1,200.34")
+```
+
 #Relation operators
 
 |Relation operators|
