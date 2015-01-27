@@ -17,7 +17,6 @@ detach(mtcars)
 **unique**
 
 #dplyr
-======
 
 Start by rewarpping the file in **table_df**,**table_dt**,**table_sql** for smaller print results.
 
@@ -133,7 +132,6 @@ flights %>%
 ```
 
 #tidyr
-======
 
 **chain** works in this package as well
 
