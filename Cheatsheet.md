@@ -226,3 +226,7 @@ log(x)|	natural logarithm
 log10(x)|	common logarithm
 exp(x)|	e^x
 
+####ggplot2
+
+```
+qplot(log(pm25), log(eno), data = maacs, color=mopos, geom=c("point","smooth"), method="lm")
