@@ -80,7 +80,14 @@ summarize(group_by(mtcars, cyl), m = mean(disp), sd = sd(disp))
 **group_by**
 
 ```
+# summarise peels off a single layer of grouping
+by_vs_am <- group_by(mtcars, vs, am)
+by_vs <- summarise(by_vs_am, n = n())
+groups(by_vs)
+summarise(by_vs, n = sum(n))
+# use ungroup() to remove if not wanted
 
+mtcars %>% group_by(vs,am) %>% summarize(n()) %>% print
 ```
 
 **n()** The number of observations in the current group
@@ -154,7 +161,31 @@ stocks %>% gather(stock, price, -time)
 students3 %>%
   gather(class, grade, class1:class5, na.rm = TRUE)
 ```
+####Separate one column into multiple columns
 
+**separate**
+
+```
+df <- data.frame(x = c("a.b", "a.d", "b.c"),y=c(1,2,3))
+df %>% separate(x, c("A", "B"))
+df %>% separate(x, into=c("A","B"))
+```
+
+####Spread a key-value pair across multiple columns
+
+**spread**
+
+```
+stocks <- data.frame(
+  time = as.Date('2009-01-01') + 0:9,
+  X = rnorm(10, 0, 1),
+  Y = rnorm(10, 0, 2),
+  Z = rnorm(10, 0, 4)
+)
+stocksm <- stocks %>% gather(stock, price, -time)
+stocksm %>% spread(stock, price)
+stocksm %>% spread(time, price)
+```
 
 #Relation operators
 
